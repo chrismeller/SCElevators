@@ -78,11 +78,15 @@ namespace SCElevators.Host
                         }
 
                         next++;
+                        errors = 0;
 
                         Thread.Sleep(250);
                     }
                     catch (Exception e)
                     {
+                        Console.WriteLine(" Not found?");
+
+                        next++;
                         errors++;
 
                         if (errors >= threshold)
