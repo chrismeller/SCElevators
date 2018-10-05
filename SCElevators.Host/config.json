@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    "SCElevators.Data.ApplicationDbContext":
+      "Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=SCElevators;Integrated Security=True"
+  }
+}
