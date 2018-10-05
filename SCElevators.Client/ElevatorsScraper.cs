@@ -60,6 +60,13 @@ namespace SCElevators.Client
                 // the number we search for is actually just the number in the database, so we don't know what its registration number actually is yet
                 var num = doc.DocumentNode.SelectSingleNode(
                     "//div[ contains( @class, 'display-label' ) and contains( text(), '#' )]/following-sibling::div[ contains( @class, 'display-field' ) ]/text()");
+
+                // if there was no number found then we don't need to do anything else - this is a blank page that indicates we've hit the end of the list
+                if (num == null || String.IsNullOrWhiteSpace(num.InnerText))
+                {
+                    throw new Exception("Elevator not found!");
+                }
+
                 var owner = doc.DocumentNode.SelectSingleNode(
                     "//div[ contains( @class, 'display-label' ) and contains( text(), 'Owner' )]/following-sibling::div[ contains( @class, 'display-field' ) ]/text()");
                 var location = doc.DocumentNode.SelectSingleNode(
